@@ -1,12 +1,32 @@
 package com.devsuperior.movieflix.dto;
 
-public class MovieCardDTO {
+import com.devsuperior.movieflix.entities.Movie;
+import com.devsuperior.movieflix.projections.MovieCardProjection;
+
+public class MovieCardDTO{
 
     private Long id;
     private String title;
     private String subTitle;
     private Integer year;
     private String imgUrl;
+
+    public MovieCardDTO(Movie entity){
+        id = entity.getId();
+        title = entity.getTitle();
+        subTitle = entity.getSubTitle();
+        year = entity.getYear();
+        imgUrl = entity.getImgUrl();
+    }
+
+    public MovieCardDTO(MovieCardProjection projection){
+        id = projection.getId();
+        title = projection.getTitle();
+        subTitle = projection.getSubTitle();
+        year = projection.getMovieYear();
+        imgUrl = projection.getImgUrl();
+    }
+
 
     public Long getId() {
         return id;
